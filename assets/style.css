@@ -1,0 +1,27 @@
+.highScore {
+  float: left;
+}
+
+.time {
+  float: right;
+}
+
+.heading {
+  text-align: center;
+}
+
+p {
+  text-align: center;
+}
+
+.startButton {
+  background-color: #4caf50; /* Green */
+  border: none;
+  padding: 15px 32px;
+  float: none;
+  text-align: center;
+  align-content: center;
+  width: 25%;
+  margin: 0 auto;
+  font-size: 16px;
+}
