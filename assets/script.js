@@ -14,7 +14,7 @@ startQuiz = function() {
 
 showQuestions = function() {
   if (document.getElementById("quizContainer").style.display == "none") {
-    var content = document.getElementsByClassName("questionsContainer");
+    var content = document.getElementsByClassName("quizContainer");
     for (var i = 0; i < content.length; i++) content[i].style.display = "none";
     document.getElementById("quizContainer").style.display = "block";
   } else {
@@ -22,19 +22,10 @@ showQuestions = function() {
   }
 };
 
-showButtons = function() {
-  if (document.getElementById("previous").style.display == "none") {
-    var content = document.getElementsByClassName("prev");
-    for (var i = 0; i < content.length; i++) content[i].style.display = "none";
-    document.getElementById("previous").style.display = "block";
-  } else {
-    document.getElementById("previous").style.display = "contents";
-  }
-};
 
 // functions for questions
 window.onload = function quiz() {
-    startButton.addEventListener("click", function beginQuiz() {
+  startButton.addEventListener("click", function beginQuiz() {
     const myQuestions = [
       {
         question: "Commonly used data types DO NOT include:",
@@ -84,8 +75,6 @@ window.onload = function quiz() {
         correctAnswer: "c"
       }
     ];
-
-
 
     function buildQuiz() {
       // we'll need a place to store the HTML output
@@ -154,6 +143,11 @@ window.onload = function quiz() {
       resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}`;
     }
 
+      const previousButton = document.getElementById("previous");
+      const nextButton = document.getElementById("next");
+      const slides = document.querySelectorAll(".slide");
+      let currentSlide = 0;
+
     function showSlide(n) {
       slides[currentSlide].classList.remove("active-slide");
       slides[n].classList.add("active-slide");
@@ -189,11 +183,6 @@ window.onload = function quiz() {
     // display quiz right away
     buildQuiz();
 
-    const previousButton = document.getElementById("previous");
-    const nextButton = document.getElementById("next");
-    const slides = document.querySelectorAll(".slide");
-    let currentSlide = 0;
-
     showSlide(0);
 
     // on submit, show results
@@ -203,5 +192,4 @@ window.onload = function quiz() {
   });
   startButton.addEventListener("click", startQuiz);
   startButton.addEventListener("click", showQuestions);
-  startButton.addEventListener("click", showButtons);
 };
